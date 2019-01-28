@@ -35,23 +35,19 @@ public class MapInterfaceBase<T,K> implements IWebServiceAPI {
     }
 
 
-
     public void setHttpClientService(IHttpClientService httpClientService) { this.httpClientService = httpClientService; }
-    public IHttpClientService getHttpClientService() {
-        return httpClientService;
-    }
-    public String getAPIPath() {
-        return APIPath;
-    }
-    public void setAPIPath(String APIPath) {
-        this.APIPath = APIPath;
-    }
+    public IHttpClientService getHttpClientService() {return httpClientService;}
+	
+    public String getAPIPath() {return APIPath;}
+    public void setAPIPath(String APIPath) {this.APIPath = APIPath;}
+	
+	public APIConfig getApiconfig() {return apiconfig;}
+    public void setApiconfig(APIConfig apiconfig) { this.apiconfig = apiconfig;}
 
 
 
     public  Map<String, Object>  doSig(Map<String, Object> unsortMap,String path){
 
-        //unsortMap.put("key",key);
         unsortMap.put("key",apiconfig.getKey());
 
         Map<String, Object> result = unsortMap.entrySet().stream()
@@ -91,11 +87,5 @@ public class MapInterfaceBase<T,K> implements IWebServiceAPI {
     }
 
 
-    public APIConfig getApiconfig() {
-        return apiconfig;
-    }
-
-    public void setApiconfig(APIConfig apiconfig) {
-        this.apiconfig = apiconfig;
-    }
+    
 }
